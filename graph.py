@@ -17,12 +17,12 @@ plt.legend(["y", "z"])　#グラフの名前を表示
 plt.show()　#命令
 
 ＃フォントとグラフのサイズ
-
-plt.rcParams['font.family'] = 'Arial Unicode MS Gothic' #windowsの方は'MS Gothic'をお試しください
-plt.rcParams["figure.figsize"] = [8, 6] # 単位はインチ
-plt.rcParams['font.size'] = 17
-plt.rcParams['xtick.labelsize'] = 15
-plt.rcParams['ytick.labelsize'] = 15
+plt.reParams["font.family"] = "Arial Unicode MS"　#フォントの指定
+#Windowsの場合：Arial Unicode MS　→　MS Gothicに直す
+plt.reParams["figure.figsize"] = [8, 6] #グラフのサイズを指定（単位はインチ）１インチ＝2.54cm
+plt.reParams["font.size"] = 17 #文字のサイズ
+plt.reParams["xtick.labelsize"] = 15 #x軸のメモリのサイズの指定
+plt.reParams["ytick.labelsize"] = 15 #y軸のメモリのサイズの指定
 
 ＃グラフの線の指定
 plt.plot(x, y, "--") #-------------になる
@@ -34,6 +34,16 @@ plt.ylim(0, 22) #ｙ軸の範囲の指定
 plt.scatter(x, y) #散布図の場合、scatterを使う
 plt.scatter(x, z)
 #あとは折れ線グラフと一緒
+
+＃円グラフ
+x_labels = ["A", "B", "C"]　#ラベルをリストで生成
+plt.pie(x, labels=x_labels)　#円グラフを描くための関数
+plt.pie(x, labels=x_labels, startangle=90, concerclock=False)
+#startangleはどこから始めるか、concerclockは回転方向：Trueなら反時計、Falseなら時計周り
+plt.pie(x, label = x_label, startangle=90, concerclock=False, autopct=lambda f:"{:.1f}".format(f) if f > 5 else "")
+#fが5より大きかったら少数1桁の％表示する。fが5以下なら""を返す。
+plt.title("円グラフ")
+plt.show()
 
 
 
